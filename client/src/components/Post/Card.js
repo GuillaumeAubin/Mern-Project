@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 import FollowHandler from "../Profil/FollowHandler";
 import LikeButton from "./LikeButton";
@@ -8,6 +8,7 @@ const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -26,6 +27,7 @@ const Card = ({ post }) => {
                 usersData
                   .map((user) => {
                     if (user._id === post.posterId) return user.picture;
+                    else return null;
                   })
                   .join("")
               }
@@ -39,6 +41,7 @@ const Card = ({ post }) => {
                   {!isEmpty(usersData[0]) &&
                     usersData.map((user) => {
                       if (user._id === post.posterId) return user.pseudo;
+                      else return null;
                     })}
                 </h3>
                 {post.posterId !== userData._id && (

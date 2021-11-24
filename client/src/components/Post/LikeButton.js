@@ -11,12 +11,12 @@ const LikeButton = ({ post }) => {
   const dispatch = useDispatch();
 
   const like = () => {
-    dispatch(likePost(post._id, uid))
+    dispatch(likePost(post._id, uid));
     setLiked(true);
   };
 
   const unlike = () => {
-    dispatch(unlikePost(post._id, uid))
+    dispatch(unlikePost(post._id, uid));
     setLiked(false);
   };
 
