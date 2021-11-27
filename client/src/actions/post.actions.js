@@ -56,6 +56,7 @@ export const likePost = (postId, userId) => {
     })
       .then((res) => {
         dispatch({ type: LIKE_POST, payload: { postId, userId } });
+        //console.log(dispatch({ type: LIKE_POST, payload: { postId, userId } }));
       })
       .catch((err) => console.log(err));
   };
