@@ -1,5 +1,14 @@
 'use strict'
+const express = require("express")
+const dbDatabase = require("./models")
 const { Model } = require('sequelize')
+/*const app = express()
+app.listen(8080,() => {
+  console.log("le serveur tourne sur le porte 8080")
+});*/
+dbDatabase.sequelize.sync({ force: true }).then(() => {
+  console.log("Connecté à MySQL");
+});
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     /**
